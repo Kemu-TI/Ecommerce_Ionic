@@ -2,7 +2,7 @@
 
 const express = require ('express');
 const router = express.Router();
-const controller = require('../controllers/produto-controllers');
+const controller = require('../controllers/usuario-controller');
 
 let _crtl = new controller();
 
