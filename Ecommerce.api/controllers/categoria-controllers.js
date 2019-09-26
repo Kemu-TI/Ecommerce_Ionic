@@ -1,36 +1,43 @@
 'use strict'
 
-require('../models/categoria-model');
-const mongoose = require('mongoose');
-const categoria = mongoose.model('categoria');
 const repository = require('../repositories/categoria-repository');
+const ctrlBase = require('../bin/base/controller-base');
+const validation = require('../bin/helpers/validation');
+const _repo = new repository();
 
 function categoriaController(){
 }
 
 categoriaController.prototype.post = async (req,res) => {
-let resultado = await new repository().create(req.body);
-res.status(201).send(resultado);
+
+    let _validationContratc = new validation();
+    _validationContratc.isRequired(req.titulo,'Título é obrigatório');
+    _validationContratc.isRequired(req.foto, 'A foto é obrigatória');
+    ctrlBase.post(_repo, _validationContratc, req, res);
 };
 
 categoriaController.prototype.put = async (req,res) => {
-let resultado = await new repository().update(req.params.id, req.body);
-res.status(202).send(resultado);
+
+    
+    let _validationContratc = new validation();
+    _validationContratc.isRequired(req.titulo,'Título é obrigatório');
+    _validationContratc.isRequired(req.foto, 'A foto é obrigatória');
+    _validationContratc.isRequired(req.params.id, 'O id que será atualizada é obrigatório');
+    ctrlBase.put(_repo, _validationContratc, req, res);
+
+
 };
 
 categoriaController.prototype.get = async (req,res) => {
-    let lista = await new repository().getAll();
-    res.status(200).send(lista);
+    ctrlBase.get(_repo, req, res);
 };
 
 categoriaController.prototype.getById = async (req,res) => {
-   let categoria = await new repository().getById(req.params.id);
-   res.status(200).send(categoria);
+    ctrlBase.getById(_repo, req, res);
 };
 
 categoriaController.prototype.delete = async (req,res) => {
-let deletado = await new repository().delete(req.params.id);
-res.status(204).send(deletado);
+    ctrlBase.delete(_repo, req, res);
 };
 
 module.exports = categoriaController;
