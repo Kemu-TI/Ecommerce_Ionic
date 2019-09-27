@@ -16,8 +16,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 //configurando a conexão com o banco
 //mongoose.connect('mongodb+srv://admin:vitoria@cluster0-wj6vr.mongodb.net/test?retryWrites=true&w=majority');
-mongoose.connect(variables.Database.connection, { useNewUrlParser: true, 
-    useUnifiedTopology: true});
+mongoose.connect(variables.Database.connection,{ useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology: true});
 
 //configurando as rotas
 app.use('/api/categoria',categoriaRouter);
