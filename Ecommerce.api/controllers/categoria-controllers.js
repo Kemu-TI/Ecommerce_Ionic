@@ -11,8 +11,8 @@ function categoriaController(){
 categoriaController.prototype.post = async (req,res) => {
 
     let _validationContratc = new validation();
-    _validationContratc.isRequired(req.titulo,'Título é obrigatório');
-    _validationContratc.isRequired(req.foto, 'A foto é obrigatória');
+    _validationContratc.isRequired(req.body.titulo,'Título é obrigatório');
+    _validationContratc.isRequired(req.body.foto, 'A foto é obrigatória');
     ctrlBase.post(_repo, _validationContratc, req, res);
 };
 
@@ -20,16 +20,16 @@ categoriaController.prototype.put = async (req,res) => {
 
     
     let _validationContratc = new validation();
-    _validationContratc.isRequired(req.titulo,'Título é obrigatório');
-    _validationContratc.isRequired(req.foto, 'A foto é obrigatória');
-    _validationContratc.isRequired(req.params.id, 'O id que será atualizada é obrigatório');
+    _validationContratc.isRequired(req.body.titulo,'Título é obrigatório');
+    _validationContratc.isRequired(req.body.foto, 'A foto é obrigatória');
+   // _validationContratc.isRequired(req.params.id, 'O id que será atualizada é obrigatório');
+     
     ctrlBase.put(_repo, _validationContratc, req, res);
-
-
 };
 
 categoriaController.prototype.get = async (req,res) => {
     ctrlBase.get(_repo, req, res);
+    console.log('Peguei a informação na Categoria', req.usuarioLogado.user._id);
 };
 
 categoriaController.prototype.getById = async (req,res) => {
