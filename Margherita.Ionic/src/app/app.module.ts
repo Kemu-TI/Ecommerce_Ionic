@@ -9,6 +9,8 @@ import { SpinnerProvider } from '../providers/spinner/spinner';
 import { AlertProvider } from '../providers/alert/alert';
 import { HttpProvider } from '../providers/http/http';
 import { NetworkProvider } from '../providers/network/network';
+import { UsuarioProvider } from '../providers/usuario/usuario';
+import { HttpClientModule } from '@angular/common/http';
 //import { HomePage } from '../pages/home/home';
 
 @NgModule({
@@ -18,6 +20,7 @@ import { NetworkProvider } from '../providers/network/network';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -32,7 +35,8 @@ import { NetworkProvider } from '../providers/network/network';
     SpinnerProvider,
     AlertProvider,
     HttpProvider,
-    NetworkProvider
+    NetworkProvider,
+    UsuarioProvider
   ]
 })
 export class AppModule {}
