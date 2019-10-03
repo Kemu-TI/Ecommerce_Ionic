@@ -1,16 +1,16 @@
 'use strict'
 
-const express = require ('express');
+const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/produto-controllers');
 const auth = require('../middlewares/authenctication');
 
-let _crtl = new controller();
+let _ctrl = new controller();
 
-router.get('/',auth, _crtl.get);
-router.get('/:id',auth, _crtl.getById);
-router.post('/',auth, _crtl.post);
-router.put('/:id',auth, _crtl.put);
-router.delete('/:id',auth, _crtl.delete);
+router.get('/', auth, _ctrl.get);
+router.get('/:id', auth, _ctrl.getById);
+router.post('/', auth, _ctrl.post);
+router.put('/:id', auth, _ctrl.put);
+router.delete('/:id', auth, _ctrl.delete);
 
 module.exports = router;
