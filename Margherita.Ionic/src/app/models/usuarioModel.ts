@@ -1,5 +1,5 @@
 export class UsuarioModel{
-nomde:string;
+nome:string;
 email:string;
 senha:string;
 senhaConfirmacao: string;

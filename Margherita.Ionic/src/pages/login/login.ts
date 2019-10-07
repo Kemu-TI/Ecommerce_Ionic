@@ -2,7 +2,6 @@ import { UsuarioProvider } from './../../providers/usuario/usuario';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -17,10 +16,6 @@ export class LoginPage {
      public navParams: NavParams,
      private usuarioSrv: UsuarioProvider  
      ) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
  async login(): Promise<void>{

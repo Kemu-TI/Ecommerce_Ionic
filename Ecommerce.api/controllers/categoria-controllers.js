@@ -3,6 +3,7 @@
 const repository = require('../repositories/categoria-repository');
 const ctrlBase = require('../bin/base/controller-base');
 const validation = require('../bin/helpers/validation');
+
 const _repo = new repository();
 
 function categoriaController() {
