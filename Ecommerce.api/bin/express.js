@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors');
+//const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const variables = require('../bin/configuration/variables');
@@ -15,7 +15,7 @@ const app = express();
 //Configuração de parse do JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
+//app.use(cors());
 //Configurando a conexão com banco de dados
 //mongoose.connect(variables.Database.connection, { useNewUrlParser: true });
 mongoose.connect(variables.Database.connection,{ useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology: true});

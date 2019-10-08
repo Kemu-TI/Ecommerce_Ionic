@@ -1,4 +1,5 @@
 exports.post = async (repository, validationContract, req, res) => {
+    
     try {
         let data = req.body;
         if (!validationContract.isValid()) {
