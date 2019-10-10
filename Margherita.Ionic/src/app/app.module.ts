@@ -3,6 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Camera } from '@ionic-native/camera/ngx';
+import { Network } from '@ionic-native/network/ngx';
 
 import { MyApp } from './app.component';
 import { SpinnerProvider } from '../providers/spinner/spinner';
@@ -10,13 +12,13 @@ import { AlertProvider } from '../providers/alert/alert';
 import { HttpProvider } from '../providers/http/http';
 import { NetworkProvider } from '../providers/network/network';
 import { UsuarioProvider } from '../providers/usuario/usuario';
-import { HttpClientModule } from '@angular/common/http';
-//import { HomePage } from '../pages/home/home';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { CategoriaProvider } from '../providers/categoria/categoria';
+import { CameraProvider } from '../providers/camera/camera';
 
 @NgModule({
   declarations: [
     MyApp
-    //HomePage
   ],
   imports: [
     BrowserModule,
@@ -26,17 +28,20 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp
-    //HomePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     SpinnerProvider,
     AlertProvider,
     HttpProvider,
     NetworkProvider,
-    UsuarioProvider
+    UsuarioProvider,
+    CategoriaProvider,
+    CameraProvider,
+    Camera,
+    Network
   ]
 })
-export class AppModule {}
+export class AppModule { }
