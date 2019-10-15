@@ -13,8 +13,8 @@ const usuarioRouter = require('../routes/usuario-router');
 const app = express();
 
 //Configuração de parse do JSON
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '10mb'}));
+app.use(bodyParser.urlencoded({limit: '10mb', extended: false }));
 //app.use(cors());
 //Configurando a conexão com banco de dados
 //mongoose.connect(variables.Database.connection, { useNewUrlParser: true });

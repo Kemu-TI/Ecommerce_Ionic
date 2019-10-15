@@ -32,8 +32,24 @@ export class AdmCategoriaPage {
 
   }
 
+  async excluir(): Promise<void> {
+    try {
+      this.alertSrv.confirm('Excluir?', `Deseja realmente excluir a categoria ${this.categoria.titulo}?`,
+        async () => {
+          let excluirResult = await this.categoriaSrv.delete(this.categoria._id);
+          if (excluirResult.sucess) {
+            this.alertSrv.toast('Categoria excluída com sucesso!', 'bottom');
+            this.navCtrl.setRoot('AdmCategoriasPage');
+          }
+        });
+    } catch (error) {
+      console.log('Erro ao excluir', error);
+    }
+  }
+
   async salvar(): Promise<void> {
     let sucesso = false;
+   
     if (!this.categoria._id) {
       let cadastroResult = await this.categoriaSrv.post(this.categoria);
       sucesso = cadastroResult.sucess;
