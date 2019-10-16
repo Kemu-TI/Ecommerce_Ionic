@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
+import { Camera, CameraOptions } from '@ionic-native/camera'
 import { Platform } from 'ionic-angular';
 
 @Injectable()
@@ -24,7 +24,8 @@ export class CameraProvider {
             saveToPhotoAlbum: false,
             correctOrientation: true
           }
-          this.camera.getPicture(options).then(
+          //this.camera.getPicture(options).then(
+            this.camera.getPicture(options).then(
             (imgData) => {
               let base64Image = `data:image/jpeg;base64,${imgData}`
               callback(base64Image);
