@@ -5,6 +5,7 @@ export class ConfigHelper{
 
    public static storageKeys = {
         token: 'margherita.token',
-        user: 'margherita.user'
+        user: 'margherita.user',
+        selectCategory: 'margherita.select.category'
     }
 }
