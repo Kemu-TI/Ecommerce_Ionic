@@ -27,7 +27,8 @@ class usuarioRepository {
             {
                 nome: data.nome,
                 email: data.email,
-                foto: data.foto
+                foto: data.foto,
+                telefone: data.telefone
             });
         return this._base._model.findById(usuarioAtualizado._id, this._projection)
     }

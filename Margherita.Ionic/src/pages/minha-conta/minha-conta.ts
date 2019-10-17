@@ -33,7 +33,7 @@ export class MinhaContaPage {
     let action = this.actionSheetCtrl.create({
       title: 'Foto',
       buttons: [
-       // { text: 'Limpar', handler: () => { this.usuarioLogado.foto = ConfigHelper.photo; } },
+        { text: 'Limpar', handler: () => { this.usuarioLogado.foto = ConfigHelper.photo; } },
         {
           text: 'Tirar Foto', handler: () => {
             this.cameraSrv.getPictureFromGalery(photo => {
@@ -49,6 +49,8 @@ export class MinhaContaPage {
 
   async salvar(): Promise<void> {
     try {
+      //this.usuarioLogado.telefone = this.usuarioLogado.telefone.toString();
+      //console.log(this.usuarioLogado);
       let salvarResult = await this.usuarioSrv.put(this.usuarioLogado._id, this.usuarioLogado);
       if (salvarResult.sucess) {
         this.alertSrv.toast('Dados atualizados com sucesso!', 'bottom');
