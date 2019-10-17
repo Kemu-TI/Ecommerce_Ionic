@@ -1,9 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpProvider } from './../http/http';
+import { CarrinhoItemModel } from './../../app/models/CarrinhoItemModel';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ProdutoModel } from '../../app/models/produtoModel';
 import { CarrinhoModel } from '../../app/models/carrinhoModel';
-import { CarrinhoItemModel } from '../../app/models/CarrinhoItemModel';
+import { Events } from 'ionic-angular';
+import { ConfigHelper } from '../../app/helpers/configHelper';
+import { HttpResultModel } from '../../app/models/HttpResultModel';
 
 @Injectable()
 export class CarrinhoProvider {
@@ -12,10 +15,14 @@ export class CarrinhoProvider {
   private carrinho: Observable<CarrinhoModel>;
   private carrinhoObservable: any;
 
-  constructor(public http: HttpClient) {
+  constructor(
+    public http: HttpProvider,
+    public evt: Events) {
 
     //Inicializando nosso carrinho
     this._carrinho.datahora = new Date();
+    this._carrinho.itens = new Array<CarrinhoItemModel>();
+    this._carrinho.valorTotal = 0.0;
 
     //Inicializando nosso observable
     this.carrinho = Observable.create(obs => {
@@ -47,6 +54,7 @@ export class CarrinhoProvider {
     }
 
     this._calcularCarrinho();
+    this.evt.publish(ConfigHelper.Events.atualizaoQuantidadeProduto, {});
     this.carrinhoObservable.next(this._carrinho);
 
   }
@@ -63,6 +71,7 @@ export class CarrinhoProvider {
       }
     }
     this._calcularCarrinho();
+    this.evt.publish(ConfigHelper.Events.atualizaoQuantidadeProduto, {});
     this.carrinhoObservable.next(this._carrinho);
   }
 
@@ -79,6 +88,28 @@ export class CarrinhoProvider {
     this._carrinho.itens.forEach(prod => {
       this._carrinho.valorTotal += (prod.Produto.preco * prod.Quantidade);
     });
+  }
+
+  public SalvarPedido(pedido: CarrinhoModel): Promise<HttpResultModel> {
+
+    let _pedido: any = {};
+    _pedido.valorTotal = pedido.valorTotal;
+    _pedido.itens = [];
+
+    pedido.itens.forEach(prod => {
+      _pedido.itens.push({
+        quantidade: prod.Quantidade,
+        produtoId: prod.Produto._id
+      })
+    });
+
+    _pedido.itens = JSON.stringify(_pedido.itens);
+
+    return this.http.post(`${ConfigHelper.Url}/pedido`, _pedido);
+  }
+
+  public GetMeusPedidos(): Promise<HttpResultModel> {
+    return this.http.get(`${ConfigHelper.Url}/pedido`);
   }
 
 

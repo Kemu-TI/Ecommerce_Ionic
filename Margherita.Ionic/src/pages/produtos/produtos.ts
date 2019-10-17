@@ -30,7 +30,7 @@ export class ProdutosPage {
   ionViewWillEnter() {
     this.carrinhoSrv.getCarrinho().subscribe(data => {
       this.carrinho = data;
-      console.log('observable', this.carrinho);
+     // console.log('observable', this.carrinho);
     });
 
     this.categoriaSelecionada = <CategoriaModel>JSON.parse(localStorage.getItem(ConfigHelper.storageKeys.selectCategory));
