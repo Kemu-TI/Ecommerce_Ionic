@@ -1,3 +1,4 @@
+import { CarrinhoProvider } from './../../providers/carrinho/carrinho';
 import { AlertProvider } from './../../providers/alert/alert';
 import { ProdutoModel } from './../../app/models/produtoModel';
 import { Component } from '@angular/core';
@@ -16,7 +17,8 @@ export class VisualizarProdutoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public ViewCtrl: ViewController,
-    private alertSrv: AlertProvider) {
+    private alertSrv: AlertProvider,
+    private carrinhoSrv: CarrinhoProvider) {
 
   }
 
@@ -30,8 +32,8 @@ export class VisualizarProdutoPage {
 
   adicionarNoCarrinho() {
     this.alertSrv.toast('Produto adicionado ao carrinho com sucesso!', 'bottom');
+    this.carrinhoSrv.adicionarNovoItem(this.produto);
     this.ViewCtrl.dismiss();
   }
-  
 
 }
