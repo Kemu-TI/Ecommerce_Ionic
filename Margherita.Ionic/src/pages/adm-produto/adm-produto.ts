@@ -80,6 +80,7 @@ export class AdmProdutoPage {
     if (sucesso) {
       this.alertSrv.toast('Produto salvo com sucesso!', 'bottom');
       this.navCtrl.setRoot('AdmProdutosPage');
+    
     }
   }
 
