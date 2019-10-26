@@ -30,7 +30,7 @@ export class ProdutosPage {
   ionViewWillEnter() {
     this.carrinhoSrv.getCarrinho().subscribe(data => {
       this.carrinho = data;
-     // console.log('observable', this.carrinho);
+      console.log('obs');
     });
 
     this.categoriaSelecionada = <CategoriaModel>JSON.parse(localStorage.getItem(ConfigHelper.storageKeys.selectCategory));
@@ -49,7 +49,6 @@ export class ProdutosPage {
   }
 
   quantidadeAlterada(produto: ProdutoModel, evt: any): void {
-    console.log(`${produto.nome} - quantidade: ${evt.quantidade} - acao: ${evt.acao}`);
     if (evt.acao == AcaoCarrinhoEnum.Adicionar)
       this.carrinhoSrv.adicionarNovoItem(produto);
     else

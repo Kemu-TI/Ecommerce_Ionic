@@ -1,8 +1,8 @@
-import { ConfigHelper } from './../../app/helpers/configHelper';
 import { CategoriaProvider } from './../../providers/categoria/categoria';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, Events } from 'ionic-angular';
 import { CategoriaModel } from '../../app/models/categoriaModel';
+import { ConfigHelper } from '../../app/helpers/configHelper';
 
 @IonicPage()
 @Component({
@@ -17,7 +17,8 @@ export class CategoriaPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private categoriaSrv: CategoriaProvider,
-    public actionSheetCtrl: ActionSheetController) {
+    public actionSheetCtrl: ActionSheetController,
+    public evt: Events) {
   }
 
   ionViewWillEnter() {
@@ -36,7 +37,6 @@ export class CategoriaPage {
   }
 
   adminOptions(): void {
-    console.log('atu')
     let action = this.actionSheetCtrl.create({
       title: 'Administração',
       buttons: [
@@ -48,7 +48,7 @@ export class CategoriaPage {
     action.present();
   }
 
-  selecionarProduto(item: CategoriaModel): void{
+  selecionarProduto(item: CategoriaModel): void {
     localStorage.setItem(ConfigHelper.storageKeys.selectCategory, JSON.stringify(item));
     this.navCtrl.setRoot('ProdutosPage');
   }

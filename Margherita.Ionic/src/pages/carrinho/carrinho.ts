@@ -42,6 +42,7 @@ export class CarrinhoPage {
       let pedidoResult = await this.carrinhoSrv.SalvarPedido(this.carrinho);
       if (pedidoResult.sucess) {
         //this.navCtrl.setRoot('MeusPedidosPage');
+        this.navCtrl.setRoot('CategoriaPage');
         this.alertSrv.toast('Pedido realizado com sucesso, logo você estará matando sua fome :D', 'bottom');
       }
     } catch (error) {

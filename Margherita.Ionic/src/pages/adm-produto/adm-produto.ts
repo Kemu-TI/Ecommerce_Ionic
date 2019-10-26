@@ -29,11 +29,9 @@ export class AdmProdutoPage {
     private alertSrv: AlertProvider) {
 
     let _prod = this.navParams.get('_produto');
-
     if (_prod && _prod._id) {
       this.produto = <ProdutoModel>_prod;
       this.produto.categoriaId = _prod.categoriaId._id;
-      //console.log(this.produto.categoriaId);
     }
     else
       this.produto = new ProdutoModel();
@@ -68,7 +66,6 @@ export class AdmProdutoPage {
   }
 
   async salvar(): Promise<void> {
-    
     let sucesso = false;
     if (!this.produto._id) {
       let cadastroResult = await this.produtoSrv.post(this.produto);
@@ -80,7 +77,6 @@ export class AdmProdutoPage {
     if (sucesso) {
       this.alertSrv.toast('Produto salvo com sucesso!', 'bottom');
       this.navCtrl.setRoot('AdmProdutosPage');
-    
     }
   }
 

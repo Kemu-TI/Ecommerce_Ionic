@@ -29,6 +29,7 @@ export class MinhaContaPage {
   ionViewDidLoad() {
     this.LoadData();
   }
+
   mudarFoto(): void {
     let action = this.actionSheetCtrl.create({
       title: 'Foto',
@@ -49,11 +50,10 @@ export class MinhaContaPage {
 
   async salvar(): Promise<void> {
     try {
-      //this.usuarioLogado.telefone = this.usuarioLogado.telefone.toString();
-      //console.log(this.usuarioLogado);
       let salvarResult = await this.usuarioSrv.put(this.usuarioLogado._id, this.usuarioLogado);
       if (salvarResult.sucess) {
-        this.alertSrv.toast('Dados atualizados com sucesso!', 'bottom');
+        this.alertSrv.toast('Dados atualizados com sucesso e Até mais!', 'bottom');
+        this.navCtrl.setRoot('LoginPage');
       }
     } catch (error) {
       console.log('Erro ao atualizar os dados, motivo: ' + error);
@@ -73,6 +73,5 @@ export class MinhaContaPage {
       console.log('Problema ao carregar os dados do usuário');
     }
   }
-
 
 }

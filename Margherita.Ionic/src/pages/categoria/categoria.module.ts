@@ -12,4 +12,4 @@ import { CategoriaPage } from './categoria';
     IonicPageModule.forChild(CategoriaPage),
   ],
 })
-export class CategoriaPageModule {}
+export class CategoriaPageModule { }

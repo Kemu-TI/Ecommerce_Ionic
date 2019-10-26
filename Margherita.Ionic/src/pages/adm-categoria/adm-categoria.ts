@@ -49,7 +49,6 @@ export class AdmCategoriaPage {
 
   async salvar(): Promise<void> {
     let sucesso = false;
-   
     if (!this.categoria._id) {
       let cadastroResult = await this.categoriaSrv.post(this.categoria);
       sucesso = cadastroResult.sucess;
