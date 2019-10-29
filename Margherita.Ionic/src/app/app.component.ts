@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { OneSignal, OSDisplayType } from '@ionic-native/onesignal/ngx';
+//import { OneSignal, OSDisplayType } from '@ionic-native/onesignal/ngx';
+import { OneSignal} from '@ionic-native/onesignal';
 import { ConfigHelper } from './helpers/configHelper';
 
 @Component({
@@ -32,7 +33,7 @@ export class MyApp {
 
     if (this.platform.is('cordova')) {
 
-      this.oneSignal.startInit('00e9d794-3770-45e8-9f93-49e05d7a004e');
+      this.oneSignal.startInit('1bc53974-3181-4eb1-8d42-fca3dad6eb23');
       this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
 
       this.oneSignal.handleNotificationReceived().subscribe(data => {
