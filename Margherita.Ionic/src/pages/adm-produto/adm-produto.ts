@@ -57,7 +57,8 @@ export class AdmProdutoPage {
           let excluirResult = await this.produtoSrv.delete(this.produto._id);
           if (excluirResult.sucess) {
             this.alertSrv.toast('Produto excluído com sucesso!', 'bottom');
-            this.navCtrl.setRoot('AdmProdutosPage');
+            this.navCtrl.push('AdmProdutosPage');
+            //this.navCtrl.setRoot('AdmProdutosPage');
           }
         });
     } catch (error) {
@@ -76,7 +77,8 @@ export class AdmProdutoPage {
     }
     if (sucesso) {
       this.alertSrv.toast('Produto salvo com sucesso!', 'bottom');
-      this.navCtrl.setRoot('AdmProdutosPage');
+      this.navCtrl.push('AdmProdutosPage');
+      //this.navCtrl.setRoot('AdmProdutosPage');
     }
   }
 

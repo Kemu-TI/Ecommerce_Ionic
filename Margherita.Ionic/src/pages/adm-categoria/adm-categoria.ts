@@ -39,7 +39,8 @@ export class AdmCategoriaPage {
           let excluirResult = await this.categoriaSrv.delete(this.categoria._id);
           if (excluirResult.sucess) {
             this.alertSrv.toast('Categoria excluída com sucesso!', 'bottom');
-            this.navCtrl.setRoot('AdmCategoriasPage');
+            this.navCtrl.push('AdmCategoriasPage');
+            //this.navCtrl.setRoot('AdmCategoriasPage');
           }
         });
     } catch (error) {
@@ -58,7 +59,8 @@ export class AdmCategoriaPage {
     }
     if (sucesso) {
       this.alertSrv.toast('Categoria salva com sucesso!', 'bottom');
-      this.navCtrl.setRoot('AdmCategoriasPage');
+      //this.navCtrl.setRoot('AdmCategoriasPage');
+      this.navCtrl.push('AdmCategoriasPage');
     }
   }
 
