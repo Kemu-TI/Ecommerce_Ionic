@@ -52,8 +52,9 @@ export class MinhaContaPage {
     try {
       let salvarResult = await this.usuarioSrv.put(this.usuarioLogado._id, this.usuarioLogado);
       if (salvarResult.sucess) {
-        this.alertSrv.toast('Dados atualizados com sucesso e Até mais!', 'bottom');
-        this.navCtrl.setRoot('LoginPage');
+        this.alertSrv.toast('Dados atualizados com sucesso!', 'bottom');
+        //this.navCtrl.setRoot('LoginPage');
+        this.navCtrl.setRoot('CategoriaPage');
       }
     } catch (error) {
       console.log('Erro ao atualizar os dados, motivo: ' + error);
