@@ -19,8 +19,14 @@ pedidoController.prototype.post = async (req, res) => {
     ctrlBase.post(_repo, _validationContract, req, res);
 };
 
-pedidoController.prototype.get = async (req, res) => {
+/*pedidoController.prototype.get = async (req, res) => {
     let result = await _repo.getAll(req.usuarioLogado._id);
+    res.status(200).send(result);
+};
+*/
+
+pedidoController.prototype.get = async (req, res) => {
+    let result = await _repo.getAll(req.usuarioLogado.user._id);
     res.status(200).send(result);
 };
 

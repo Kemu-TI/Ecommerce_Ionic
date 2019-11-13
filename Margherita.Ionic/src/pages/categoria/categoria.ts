@@ -42,6 +42,7 @@ export class CategoriaPage {
       buttons: [
         { text: 'Gerenciar Categorias', handler: () => { this.gerenciarCategoria(); } },
         { text: 'Gerenciar Produtos', handler: () => { this.gerenciarProduto(); } },
+        { text: 'Minha Conta', handler: () => { this.minhacontapage(); } },
         { text: 'Cancelar', handler: () => { }, role: 'destructive' },
         { text: 'Sair',    handler:  () => { this.sair()}}
       ]
@@ -60,6 +61,10 @@ export class CategoriaPage {
 
   private gerenciarProduto(): void {
     this.navCtrl.push('AdmProdutosPage');
+  }
+
+  private minhacontapage(): void {
+    this.navCtrl.push('MinhaContaPage');
   }
   
   private sair(): void {
